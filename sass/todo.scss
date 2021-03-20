@@ -1,0 +1,167 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+//VARIABLES
+
+$greenCheck: #38d7b2;
+//MIXINS
+@mixin flex() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@mixin iconStyle() {
+  outline: none;
+  border: none;
+  height: 100%;
+  width: 50%;
+  font-size: 1.2em;
+  display: inline-block;
+  color: #fff;
+  cursor: pointer;
+  @include flex();
+}
+// SETTING HEIGHT OF WINDOW
+html,
+body {
+  height: 100%;
+  font-family: "Montserrat", sans-serif;
+}
+
+body {
+  @include flex();
+  background-image: linear-gradient(
+    to right,
+    #10418b,
+    #006db4,
+    #0098cc,
+    #00c3d4,
+    #12ebcf
+  );
+}
+
+//MAIN
+
+main {
+  @include flex();
+  border: 3px solid $greenCheck;
+  flex-direction: column;
+  background-color: #fff;
+  min-height: 600px;
+  width: 370px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.37);
+  border-radius: 20px;
+  position: relative;
+
+  //ADD TAKS BUTTON DESIGN
+  .button {
+    height: 70px;
+    border-radius: 50px;
+    background-color: $greenCheck;
+    padding: 10px;
+    font-size: 1.5em;
+    color: white;
+    bottom: -20px;
+    @include flex();
+    flex-direction: row-reverse;
+    position: absolute;
+    bottom: -25px;
+    transition: all 1s;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.37);
+
+    // PLUS ICON
+    .plus-icon {
+      text-decoration: none;
+      color: #fff;
+      height: 70px;
+      width: 50px;
+      border-radius: 100%;
+      @include flex();
+      cursor: pointer;
+      transition: all 1s;
+    }
+
+    //TEXT INPUT
+    .task-input {
+      border: none;
+      background: none;
+      outline: none;
+      color: #fff;
+      padding: 0;
+      font-size: 20px;
+      @include flex();
+      width: 0px;
+      transition: 1s;
+
+      &::placeholder {
+        color: rgba(255, 255, 255, 0.768);
+      }
+    }
+  }
+
+  //LIST OF ADDED TASKS
+  .task-list {
+    list-style-type: none;
+    padding: 20px;
+    width: 100%;
+    top: 0;
+    position: absolute;
+    height: 533px;
+    li {
+      margin-bottom: 15px;
+      @include flex();
+      justify-content: space-between;
+      box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.198);
+      border-radius: 50px;
+      transition: all .5s;
+     
+
+      //CONTAINER FOR CHECK AND DELETE
+      .check-delete-container {
+        width: 30%;
+        background-color: hotpink;
+        border-top-right-radius: 50px;
+        border-bottom-right-radius: 50px;
+        align-self: stretch;
+        @include flex();
+        padding-top: auto;
+        overflow: hidden;
+
+        //ICON STYLE
+        .check {
+          @include iconStyle();
+          background-color: $greenCheck;
+        }
+
+        .delete {
+          @include iconStyle();
+          background-color: red;
+        }
+      }
+    }
+  }
+}
+
+p {
+  word-break: break-word;
+  white-space: break-spaces;
+  font-size: 1.1em;
+  width: 80%;
+  padding: 15px;
+}
+
+.completed{
+  text-decoration: line-through;
+  color: rgba(107, 107, 107, 0.933)  ;
+ 
+}
+
+.deleted{
+  transform: rotateZ(20deg) translateY(5rem);
+  opacity: 0;
+  
+}
+
